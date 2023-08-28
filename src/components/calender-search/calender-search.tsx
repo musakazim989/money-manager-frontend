@@ -16,7 +16,7 @@ import {
 export const CalenderSearch = () => {
   const [date, setDate] = useState<Date>()
   return (
-    <div className="p-10 flex items-center justify-center">
+    <div className="py-10 flex items-center justify-center">
       <Popover>
         <PopoverTrigger asChild>
           <Button

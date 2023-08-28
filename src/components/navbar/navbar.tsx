@@ -1,4 +1,6 @@
 import Image from "next/image"
+import { AddRecordPopup } from "../add-record/add-record-popup"
+import { UserDropdown } from "./user-dropdown"
 
 export const NavBar = () => {
   return (
@@ -17,14 +19,7 @@ export const NavBar = () => {
           </div>
           <div className="menu w-[60%] flex items-center">
             <ul className="flex">
-              <li className="mr-10">
-                <a
-                  className="nav-item font-roboto text-lg text-[#777] font-normal active:text-[#222]"
-                  href="index.html"
-                >
-                  Dashboard
-                </a>
-              </li>
+              <li className="mr-10">Dashboard</li>
               <li className="mr-10">
                 <a
                   className="nav-item font-roboto text-lg text-[#777] font-normal active:text-[#222]"
@@ -61,9 +56,7 @@ export const NavBar = () => {
           </div>
           <div className="user_profile w-[30%] flex justify-between">
             <div className="record_btn self-center">
-              <button className="record rounded-full bg-blue-500 px-2.5 py-[2px] font-roboto text-white text-sm">
-                + Record
-              </button>
+              <AddRecordPopup />
             </div>
             <div className="profile self-center flex justify-between">
               <div className="img w-[40px] h-[40px] rounded-full border-red-600 mr-[10px]">
@@ -78,9 +71,7 @@ export const NavBar = () => {
               </div>
               <div className="user_name relative">
                 <div className="name flex cursor-pointer">
-                  <h6 className="font-roboto text-medium text-[#444] font-medium mt-[5px] mr-[5px]">
-                    Sujoy Chakraborty
-                  </h6>
+                  <UserDropdown />
                   <span className="mt-[4px] text-[#444]">
                     <i className="fa-solid fa-caret-down"></i>
                   </span>

@@ -6,7 +6,7 @@ export default function Dashboard() {
   return (
     <>
       <CashData />
-      <div className=" bg-slate-100">
+      <div className=" bg-slate-100 ">
         <CalenderSearch />
         <ComponentBody />
       </div>
