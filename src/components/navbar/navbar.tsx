@@ -1,8 +1,23 @@
+"use client"
+
 import Image from "next/image"
 import { AddRecordPopup } from "../add-record/add-record-popup"
 import { UserDropdown } from "./user-dropdown"
+import Link from "next/link"
+import { signOut } from "firebase/auth"
+import { auth } from "../../app/firebase-config/configaration.tsx"
+import { redirect } from "next/navigation"
 
 export const NavBar = () => {
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        redirect("/login")
+      })
+      .catch((error) => {
+        // An error happened.
+      })
+  }
   return (
     <section className="navbar bg-white border-b border-b-gray-200">
       <div className="container-lg mx-auto">
@@ -29,12 +44,7 @@ export const NavBar = () => {
                 </a>
               </li>
               <li className="mr-10">
-                <a
-                  className="nav-item font-roboto text-lg text-[#777] font-normal active:text-[#222]"
-                  href="record.html"
-                >
-                  Records
-                </a>
+                <Link href="/dashboard/records">Records</Link>
               </li>
               <li className="mr-10">
                 <a
@@ -103,10 +113,15 @@ export const NavBar = () => {
                       </span>{" "}
                       Help
                     </li>
-                    <li className="flex font-roboto text-[#444] px-4 py-2 cursor-pointer hover:bg-[#d9d9d9]">
-                      <span className="mr-2.5 text-blue-600">
-                        <i className="fa-solid fa-right-from-bracket"></i>
-                      </span>{" "}
+                    <li
+                      onClick={logout}
+                      className="flex font-roboto text-[#444] px-4 py-2 cursor-pointer hover:bg-[#d9d9d9]"
+                    >
+                      <i>
+                        <span className="mr-2.5 text-blue-600">
+                          <i className="fa-solid fa-right-from-bracket"></i>
+                        </span>{" "}
+                      </i>
                       Log out
                     </li>
                   </ul>

@@ -1,3 +1,4 @@
+import { AddRecordPopup } from "@/components/add-record/add-record-popup"
 import { CalenderSearch } from "@/components/calender-search/calender-search"
 import Image from "next/image"
 
@@ -5,7 +6,6 @@ export default function Records() {
   return (
     <>
       <CalenderSearch />
-
       <section className="down_section bg-[#f5f5f5] py-8">
         <div className="container m-auto">
           <div className="record_part flex justify-between mt-4">
@@ -14,9 +14,7 @@ export default function Records() {
                 Records
               </h5>
               <div className="add_btn mt-2">
-                <button className="add_record rounded-full bg-[#00915f] w-full p-2.5 font-roboto text-white text-sm">
-                  + Add
-                </button>
+                <AddRecordPopup />
               </div>
               <div className="search mt-4 relative">
                 <span className="search_icon absolute top-2 left-[7px] text-[#777]">

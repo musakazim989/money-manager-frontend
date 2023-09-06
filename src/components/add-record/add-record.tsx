@@ -1,8 +1,8 @@
 export const AddRecord = () => {
   return (
-    <div className="record_modal w-full h-full bg-black bg-opacity-50 fixed top-0 left-0 flex justify-center items-center ">
+    <div className=" w-full h-full bg-black bg-opacity-50 fixed top-0 left-0 flex justify-center items-center ">
       <div className="record_item bg-white border border-[#777] rounded-lg w-[80%] absolute overflow-hidden">
-        <div className="top_part p-4 border border-b-[#d9d9d9] rounded-t-lg">
+        <div className=" p-4 border border-b-[#d9d9d9] rounded-t-lg">
           <h3 className="font-roboto text-2xl text-[#444] font-medium uppercase">
             Add Record
           </h3>
