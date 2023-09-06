@@ -2,8 +2,6 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { createUserWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../../../app/firebase-config/configaration.tsx"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { redirect } from "next/navigation"
@@ -12,40 +10,10 @@ import Link from "next/link"
 export default function Signup() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const [name, setName] = useState("")
   const [error, setError] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        if (user) {
-          redirect("/dashboard")
-        }
-      })
-      .catch((error) => {
-        const errorMessage = error.message
-        if (errorMessage.includes("email-already-in-use")) {
-          setError("Email already in use")
-        } else if (errorMessage.includes("invalid-email")) {
-          setError("Invalid email")
-        }
-        if (errorMessage) {
-          toast.error(error, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          })
-        }
-      })
   }
 
   return (

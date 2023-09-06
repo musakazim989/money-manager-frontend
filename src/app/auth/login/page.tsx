@@ -1,32 +1,15 @@
 "use client"
 import { useState } from "react"
 import Image from "next/image"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../../../app/firebase-config/configaration.tsx"
-import { Link } from "next/link"
+import Link from "next/link"
 import { redirect } from "next/navigation.js"
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        console.log(user)
-        if (user) {
-          redirect("/dashboard")
-        }
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-      })
   }
 
   return (

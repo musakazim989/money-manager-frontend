@@ -5,19 +5,10 @@ import { AddRecordPopup } from "../add-record/add-record-popup"
 import { UserDropdown } from "./user-dropdown"
 import Link from "next/link"
 import { signOut } from "firebase/auth"
-import { auth } from "../../app/firebase-config/configaration.tsx"
 import { redirect } from "next/navigation"
 
 export const NavBar = () => {
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        redirect("/login")
-      })
-      .catch((error) => {
-        // An error happened.
-      })
-  }
+  const logout = () => {}
   return (
     <section className="navbar bg-white border-b border-b-gray-200">
       <div className="container-lg mx-auto">
