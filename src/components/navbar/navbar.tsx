@@ -4,7 +4,6 @@ import Image from "next/image"
 import { AddRecordPopup } from "../add-record/add-record-popup"
 import { UserDropdown } from "./user-dropdown"
 import Link from "next/link"
-import { signOut } from "firebase/auth"
 import { redirect } from "next/navigation"
 
 export const NavBar = () => {

@@ -17,7 +17,9 @@ export default function Login() {
       <div className=" w-[420px] border-2 border-gray-100 rounded-lg p-8 flex flex-col items-center">
         <h1 className="text-2xl font-bold text-gray-500">Login</h1>
         <form className="mt-4" onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
+          <label className=" text-gray-500 text-sm" htmlFor="email">
+            Email
+          </label>
           <br />
           <input
             className=" border-2 border-gray-100 rounded-sm p-2"
@@ -26,8 +28,9 @@ export default function Login() {
             id="email"
           />
           <br />
-          <br />
-          <label htmlFor="password">Password</label>
+          <label className=" text-gray-500 text-sm" htmlFor="password">
+            Password
+          </label>
           <br />
           <input
             className=" border-2 border-gray-100 rounded-sm p-2"

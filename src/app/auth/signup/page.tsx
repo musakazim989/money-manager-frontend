@@ -14,6 +14,12 @@ export default function Signup() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
+    const sendData = async (e: any) => {
+      const requestOptions = {
+        method: "POST",
+      }
+      await fetch(process.env.NEXT_PUBLIC_API_URL, requestOptions)
+    }
   }
 
   return (
@@ -22,20 +28,9 @@ export default function Signup() {
       <div className=" w-[420px] border-2 border-gray-100 rounded-lg p-8 flex flex-col items-center">
         <h1 className="text-2xl font-bold text-gray-500">Signup</h1>
         <form className="mt-4" onSubmit={handleSubmit}>
-          {/* <label htmlFor="name">Name</label>
-          <br />
-          <input
-            className=" border-2 border-gray-100 rounded-sm p-2"
-            placeholder="example@mail.com"
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-          <br /> */}
-          <label htmlFor="email">Email</label>
-
+          <label className=" text-gray-500 text-sm" htmlFor="email">
+            Email
+          </label>
           <br />
           <input
             className=" border-2 border-gray-100 rounded-sm p-2"
@@ -46,8 +41,35 @@ export default function Signup() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
+          <label className=" text-gray-500 text-sm" htmlFor="password">
+            Password
+          </label>
           <br />
-          <label htmlFor="password">Password</label>
+          <input
+            className=" border-2 border-gray-100 rounded-sm p-2"
+            placeholder="Password"
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <label className=" text-gray-500 text-sm" htmlFor="email">
+            Email
+          </label>
+          <br />
+          <input
+            className=" border-2 border-gray-100 rounded-sm p-2"
+            placeholder="example@mail.com"
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label className=" text-gray-500 text-sm" htmlFor="password">
+            Password
+          </label>
           <br />
           <input
             className=" border-2 border-gray-100 rounded-sm p-2"
@@ -86,7 +108,6 @@ export default function Signup() {
         <p className="mt-4">
           Already have an account?
           <Link className="text-orange-500" href="/auth/login">
-            {" "}
             login
           </Link>
         </p>
