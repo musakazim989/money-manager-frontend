@@ -8,8 +8,25 @@ export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
+    try {
+      const reqOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+        reqOptions
+      )
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -26,6 +43,7 @@ export default function Login() {
             placeholder="example@mail.com"
             type="email"
             id="email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <br />
           <label className=" text-gray-500 text-sm" htmlFor="password">
@@ -37,6 +55,7 @@ export default function Login() {
             placeholder="Password"
             type="password"
             id="password"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <br />

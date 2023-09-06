@@ -30,7 +30,10 @@ export default function Signup() {
         requestOptions
       )
       const data = await response.json()
-      console.log(data)
+      setFirstname("")
+      setLastname("")
+      setEmail("")
+      setPassword("")
     } catch (error) {
       console.log(error)
     }
