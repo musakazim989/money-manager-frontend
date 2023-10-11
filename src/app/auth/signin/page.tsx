@@ -1,33 +1,54 @@
-"use client"
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { redirect } from "next/navigation.js"
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation.js";
 
 export default function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const test = (a: string, b: string) => {
+    console.log("a");
+    debugger;
+  };
+
+  const handleLogOut = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/logout`,
+        {
+          credentials: "include",
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleSubmit = async (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
+    console.log({ email, password });
     try {
       const reqOptions = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
-      }
+      };
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        reqOptions
-      )
-      const data = await response.json()
-      console.log(data)
+        reqOptions,
+      );
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className=" flex justify-center mt-[10%]">
@@ -66,6 +87,12 @@ export default function Login() {
             Login
           </button>
         </form>
+        <button
+          className="bg-red-500 text-white px-4 py-1.5 text-lg rounded-lg"
+          onClick={handleLogOut}
+        >
+          Logout
+        </button>
         <div className=" mt-6 flex gap-4">
           <Image src="/google.svg" alt="google" width={35} height={35} />
           <Image src="/facebook-v1.svg" alt="google" width={30} height={30} />
@@ -73,5 +100,5 @@ export default function Login() {
         <p className="mt-4">login with google or facebook.</p>
       </div>
     </div>
-  )
+  );
 }
